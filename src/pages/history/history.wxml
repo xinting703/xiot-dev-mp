@@ -1,0 +1,124 @@
+<!--pages/history/history.wxml-->
+<view wx:if="{{noPermission}}" class="no-permission-wrapper">
+  <image class="img-no-permission" src="/images/history/default_empty.png"></image>
+  <view class="text-no-permission">设备分享已关闭</view>
+</view>
+<block wx:else>
+  <view wx:if="{{basic_info}}" class="page-container"> 
+    <view class="dev-item dev-panel">
+      <view bindtap="checkDeviceInfo" class="photo-header">
+        <view class="name">{{basic_info.name}}</view>
+        <view class="status">
+          <block wx:if="{{basic_info.status === 'online'}}">
+            <view class="item-sts">
+              <view class="icon-wrapper">
+                <image class="icon-signal" src="{{basic_info.icon_signal}}"></image>
+              </view>{{basic_info.operator}}
+            </view>
+            <view class="item-sts">
+              <view class="icon-wrapper">
+                <view class="battery-wrapper" style="border-color: {{basic_info.battery_color || 'transparent'}};">
+                  <view class="battery-content" style="width: {{basic_info.battery_level}};background-color: {{basic_info.battery_color}};"></view>
+                  <view class="positive-point" style="background-color: {{basic_info.battery_color}};"></view>
+                </view>
+              </view>{{basic_info.battery_level}}
+              <view wx:if="{{basic_info.charging}}" class="icon-wrapper">
+                <image class="icon-charge" src="/images/common/icon_charging@2x.png"></image>
+              </view>
+            </view>
+          </block>
+          <block wx:else><view class="item-sts" style="line-height: 20rpx;">已离线</view></block>
+        </view>
+        <image class="icon-arrow" src="/images/common/detail_icon_arrow@2x.png"></image>
+      </view>
+      <!--名字显示之后才显示图片  -->
+      <view
+        wx:if="{{basic_info.name}}"
+        class="photo-wrapper"
+        style="height: {{top_photo.height}}px;">
+        <!-- <view wx:if="{{basic_info.status !== 'online'}}" class="mask-photo"></view> -->
+        <image
+          src="{{top_photo.src}}"
+          bindtap="checkTopPhoto"
+          class="photo"
+          data-src="{{top_photo.src}}"
+          style="height: {{top_photo.height}}px;">
+        </image>
+        <view wx:if="{{top_photo.src}}" class="mask-interval">
+          <image class="img-mask" src="/images/common/shadow@2x.png"></image>
+          <text class="interval">{{top_photo.interval}}</text>
+        </view>
+      </view>
+      <view class="options">
+        <view class="addr">
+          <image class="icon-addr" src="/images/common/home_icon_address@2x.png"></image>
+          <view class="text">{{address}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view
+      class="tab-wrapper"
+      style="{{tab_fixed ? 'position: fixed;top: 0;left: 0;z-index: 8;' : ''}}">
+      <view class="tab text-center">
+          <view bindtap="tabClick" wx:for="{{week}}" wx:key="unique" wx:for-item="item" class="tab-item {{current_tab === item.idx ? 'active' : ''}}" id="{{item.idx}}" data-date="{{item.date}}">
+              <view class="week text-gray2">{{item.name}}</view>
+              <view class="day text-gray1">{{item.showDate}}</view>
+          </view>
+      </view>
+      <view class="tab-line text-gray">
+          <view wx:for="{{week}}" wx:key="unique" wx:for-item="item" class="line-item {{current_tab === item.idx ? 'active' : ''}}">
+            <view class="line"></view>
+          </view>
+      </view>
+    </view>
+    <view class="photo-list">
+      <view
+        wx:if="{{week[current_tab].photo.amount === 'empty'}}"
+        class="default text-center">
+        <image class="img-no-photo" src="/images/history/default_nodata@2x.png"></image>
+        <view>暂无设备图像</view>
+      </view>
+      <block wx:else>
+        <view
+          bindtap="previewImage"
+          wx:for="{{week[current_tab].photo.list}}"
+          wx:for-item="photo"
+          wx:for-index="idx"
+          wx:key="unique"
+          data-imgidx="{{idx}}"
+          class="item-wrapper">
+          <image
+            src="{{photo.src}}"
+            class="img-photo"
+            style="height: {{photo.height}}px;"></image>
+          <view class="mask-interval" style="padding-left: 10rpx;padding-right: 10rpx;">
+            <image class="img-mask" src="/images/common/shadow@2x.png"></image>
+            <text class="interval" style="right: 20rpx;">{{photo.interval}}</text>
+          </view>
+        </view>
+        <view wx:if="{{is_loading}}" class="loading-text">正在加载...</view>
+        <view
+          wx:if="{{no_more}}"
+          class="no-more-text"
+          style="{{no_more ? 'opacity: .6;z-index: 9;' : 'opacity: 0;z-index: -99;'}}">没有更多了
+        </view>
+        <!-- <button
+          wx:if="{{week[current_tab].photo.list.length && current_tab !== week.length - 1 && (current_tab !== week.length - 2 || video_available)}}"
+          bindtap="checkVideo"
+          class="btn-video">全天时景
+        </button> -->
+        <!-- <view wx:if="{{week[current_tab].photo.list.length >= 10 && week[current_tab].photo.amount !== 'full'}}" class="check-more">上拉加载更多</view> -->
+      </block>
+    </view>
+  </view>
+  <view
+    class="btn-video"
+    bindtap="{{week[current_tab].photo.list.length && current_tab !== week.length - 1 && (current_tab !== week.length - 2 || video_available) && !week[current_tab].noVideo ? 'checkVideo' : ''}}"
+    style="color: {{week[current_tab].photo.list.length && current_tab !== week.length - 1 && (current_tab !== week.length - 2 || video_available) && !week[current_tab].noVideo ? '#569fff' : '#cfd3da'}};">
+    <view class="icon-wrapper">
+      <image wx:if="{{week[current_tab].photo.list.length && current_tab !== week.length - 1 && (current_tab !== week.length - 2 || video_available) && !week[current_tab].noVideo}}" class="icon-play" src="/images/history/detail_icon_video@2x.png"></image>
+      <image wx:else class="icon-play" src="/images/history/detail_icon_videonull@2x.png"></image>
+    </view>全天时景
+  </view>
+</block>

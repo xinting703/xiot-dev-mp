@@ -1,0 +1,50 @@
+/* pages/map/map.wxss */
+.page-container {
+  padding: 0;
+}
+map {
+  width: 100%;
+}
+/*marker描述框  */
+.map-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  /* transition: all .5s; */
+}
+.basic-info {
+  position: relative;
+  bottom: 0;
+  left: 50%;
+  background-color: #fff;
+  padding: 40rpx;
+  transform: translateX(-50%);
+}
+.name {
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 36rpx;
+  color: #393C41;
+}
+/* .photo-info */
+.photo-info {
+  position: relative;
+  background-color: #fff;
+   padding: 40rpx 20rpx 120rpx;  
+}
+.photo {
+  width: 100%;
+  height: 300rpx;
+  line-height: 0;
+  margin-top: 20rpx;
+  background-color: #CEEDFC;
+}
+.btn-follow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

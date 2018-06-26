@@ -1,0 +1,306 @@
+/*重写  */
+button:after {
+  border: none;
+}
+/*重写  */
+page {
+  height: 100%;
+}
+view,input,image,text {
+  box-sizing: border-box;
+}
+/*input相关  */
+.class-plh {
+  color: #9fa3a8;
+}
+/*button相关  */
+.btn {
+  font-size: 30rpx;
+  text-align: center;
+}
+.btn-block {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
+}
+.btn-active-gradient:active {
+  background: radial-gradient(ellipse at 50%, #fff, #E3E9F2);
+}
+.btn-reloading {
+  width: 260rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #569fff;
+  border: 2rpx solid #569fff;
+  background-color: #fff;
+  border-radius: 40rpx;
+  margin-top: 60rpx;
+}
+.btn-reloading:active {
+  color: #A4CBFE;
+}
+/*关注按钮  */
+.btn-follow {
+  color: #fff;
+}
+.btn-follow.btn-normal {
+  background-color: #6CD390;
+}
+.btn-follow.btn-normal:active {
+  background-color: #7fdea1;
+}
+.btn-follow.btn-not-allowed {
+  background-color: #C4E9D1;
+}
+/*文字相关  */
+.text-center {
+  text-align: center;
+}
+.text-green {
+  color: #6CD390;
+}
+.text-red {
+  color: #de5d5d;
+}
+/*缺省文字（页面）*/
+.page-default {
+  position: relative;
+}
+.page-default
+.text-tip {
+  font-size: 36rpx;
+  color: #9fa3a8;
+}
+/*页面整体相关（page-container）  */
+.page-container {
+  position: relative;
+  height: auto;
+  min-height: 100%;
+  padding-top: 20rpx;
+}
+.with-bg-grayblue {
+  background-color: #f0f5fd;
+}
+/*列表项  */
+.list-wrap {
+  margin-bottom: 20rpx;
+  background-color: #fff;
+}
+.list-item {
+  position: relative;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.list-item.with-image {
+  padding-left: 100rpx;
+}
+.list-item.with-arrow {
+  padding-right: 70rpx;
+}
+.list-item
+input {
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.list-item
+image {
+  position: absolute;
+  top: 30rpx;
+}
+.list-item
+.icon-label {
+  left: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
+  display: inline-block;
+}
+.list-item
+.icon-arrow {
+  right: 20rpx;
+  width: 44rpx;
+  height: 44rpx;
+  display: inline-block;
+}
+.list-item
+.text-label {
+  color: #6c737e;
+}
+.list-item
+.text-desc {
+  float: right;
+  color: #9fa3a8;
+}
+/*图标icon相关  */
+.icon-wrapper {
+  display: inline-block;
+}
+.icon-wrapper
+image {
+  vertical-align: middle;
+  margin-bottom: 4rpx;
+}
+.icon-signal {
+  width: 22rpx;
+  height: 20rpx;
+  margin-right: 6rpx;
+}
+.icon-not-owner {
+  width: 33rpx;
+  height: 24rpx;
+  margin-bottom: 4rpx;
+}
+/*电量图标  */
+.battery-wrapper {
+  position: relative;
+  width: 28rpx;
+  height: 18rpx;
+  border: 1px solid;
+  border-radius: 1px;
+  padding: 1px;
+  margin-right: 6rpx;
+}
+.battery-content {
+  height: 100%;
+}
+.positive-point {
+  position: absolute;
+  right: -3rpx;
+  top: 3rpx;
+  width: 3rpx;
+  height: 8rpx;
+}
+.icon-charge {
+  width: 14rpx;
+  height: 20rpx;
+  margin-top: -2rpx;
+}
+.icon-addr,
+.icon-share {
+  width: 30rpx;
+  height: 30rpx;
+}
+/*杂项  */
+.mt-80 {
+  margin-top: 80rpx;
+}
+/*公有样式*/
+/*设备面板*/
+.dev-item {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+}
+.dev-panel
+.name {
+  height: 40rpx;
+  display: block;
+  font-size: 36rpx;
+  line-height: 40rpx;
+  color: #393C41;
+}
+.dev-panel
+.status {
+  width: 100%;
+  height: 50rpx;
+  padding-top: 8rpx;
+}
+.dev-panel
+.status
+.item-sts {
+  min-width: 120rpx;
+  display: inline-block;
+  font-size: 22rpx;
+  color: #6a6f77;
+}
+.dev-panel
+.status
+.item-sts + .item-sts {
+  margin-left: 20rpx;
+}
+.dev-panel
+.photo-wrapper {
+  position: relative;
+  width: 100%;
+}
+.dev-panel
+.mask-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(218, 224, 233, .5);
+}
+.dev-panel
+.photo {
+  width: 100%;
+  height: 200rpx;
+  background-color: #CEEDFC;
+}
+.to-black {
+  -webkit-filter: grayscale(100%);
+     -moz-filter: grayscale(100%);
+      -ms-filter: grayscale(100%);
+       -o-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+.img-mask {
+  width: 100%;
+  height: 90rpx;
+}
+.mask-interval {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 6;
+  width: 100%;
+  height: 90rpx;
+  /* background: linear-gradient(to bottom, transparent 0%, 60%, rgba(0, 0, 0, 0.4) 100%); */
+}
+.dev-panel
+.interval {
+  position: absolute;
+  bottom: 10rpx;
+  right: 20rpx;
+  font-size: 24rpx;
+  color: #fff;
+  line-height: 30rpx;
+}
+.dev-panel
+.options {
+  position: relative;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  color: #9fa3a8;
+}
+/*地址栏*/
+.addr {
+  position: relative;
+  width: 100%; 
+  height: 30rpx;
+  font-size: 24rpx;
+  padding-left: 32rpx;
+  margin-top: 16rpx;
+}
+.addr
+.icon-addr {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.addr
+.text {
+  width: 100%;
+  line-height: 30rpx;
+  color: #9fa3a8;
+  overflow-x: scroll;
+  white-space:nowrap;
+}

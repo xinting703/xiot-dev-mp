@@ -1,0 +1,9 @@
+<!--pages/qrcode/qrcode.wxml-->
+<view class="page-container with-bg-grayblue">
+  <view class="code-wrapper text-center">
+    <view style="width: {{canvas_size}}px;height: {{canvas_size}}px;display: inline-block;">
+      <canvas canvas-id="mycanvas" style="width: 100%;height: 100%;"/>
+    </view>
+    <view class="dev-id">{{device_id}}</view>
+  </view>
+</view>

@@ -1,0 +1,23 @@
+<!--pages/inputnumber/inputnumber.wxml-->
+<view class="page-container with-bg-grayblue">
+  <view class="list-wrap">
+    <view class="list-item">
+      <input
+        value="{{input_value}}"
+        bindinput="getInput"
+        bindfocus="focusInput"
+        bindblur="blurInput"
+        placeholder="设备编号"
+        placeholder-class="class-plh"
+        focus="true">
+      </input>
+      <image
+        wx:if="{{input_value && show_clear}}"
+        bindtap="clearInput"
+        class="icon-arrow"
+        src="/images/common/icon_clear@2x.png">
+      </image>
+    </view>
+  </view>
+  <button bindtap="confirmAddDevice" class="btn btn-block text-green btn-active-gradient mt-80">关注</button>
+</view>

@@ -1,0 +1,107 @@
+<!--pages/index/index.wxml-->
+<view class="page-container">
+  <view wx:if="{{out_of_network}}" class="page-default text-center">
+    <image class="img-defalut-index" src="/images/common/default_networkbad@2x.png"></image>
+    <text class="text-tip">哎呀，网络连接有问题</text>
+    <button bindtap='reload' class="btn btn-reloading">重新加载</button>
+  </view>
+  <block wx:else>
+    <block wx:if="{{no_device}}">
+      <view class="page-default text-center">
+        <image class="img-defalut-index" src="/images/index/default_home@2x.png"></image>
+        <text class="text-tip">快来创建第一个设备数据吧</text>
+      </view>
+    </block>
+    <view wx:else class="list-dev">
+      <view wx:for="{{devices_onshow}}"
+        wx:key="{{index}}"
+        wx:for-item="dev"
+        id="{{dev.device_id}}"
+        data-devicename="{{dev.name}}"
+        data-ratio="{{dev.photo.ratio}}"
+        data-imgsrc="{{dev.photo.src}}"
+        data-createdat="{{dev.photo.created_at || ''}}"
+        bindtap='checkDetail'
+        class="dev-item dev-panel">
+        <view class="name">{{dev.device_id === checked_id ? checked_name : dev.name}}</view>
+        <view class="status">
+          <block wx:if="{{dev.status === 'online'}}">
+            <view class="item-sts">
+              <view wx:if="{{dev.icon_signal}}" class="icon-wrapper">
+                <image class="icon-signal" src="{{dev.icon_signal}}"></image>
+              </view>{{dev.operator}}
+            </view>
+            <view class="item-sts">
+              <view class="icon-wrapper">
+                <view class="battery-wrapper" style="border-color: {{dev.battery_color}};">
+                  <view class="battery-content" style="width: {{dev.battery_level}};background-color: {{dev.battery_color}};"></view>
+                  <view class="positive-point" style="background-color: {{dev.battery_color}};"></view>
+                </view>
+              </view>{{dev.battery_level}}
+              <view wx:if="{{dev.charging}}" class="icon-wrapper">
+                <image class="icon-charge" src="/images/common/icon_charging@2x.png"></image>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="item-sts" style="line-height: 20rpx;">已离线</view>
+          </block>
+          <view wx:if="{{!dev.is_owner}}" class="item-sts">
+            <view class="icon-wrapper">
+              <image class="icon-not-owner" src="/images/common/equipment_icon_share@2x.png"></image>
+            </view>
+          </view>
+        </view>
+        <view class="photo-wrapper" style="height: {{dev.photo.height}}px;">
+          <!-- <view wx:if="{{dev.status !== 'online'}}" class="mask-photo"></view> -->
+          <image class="photo {{dev.status !== 'online' ? 'to-black' : ''}}" lazy-load="{{lazy}}" src="{{dev.photo.src}}" style="height: {{dev.photo.height}}px;"></image>
+          <view wx:if="{{dev.photo.src}}" class="mask-interval">
+            <image class="img-mask" src="/images/common/shadow@2x.png"></image>
+            <text class="interval">{{dev.photo.interval}}</text>
+          </view>
+        </view>
+        <view class="options">浏览: {{dev.watch_count}}
+          <button
+            wx:if="{{dev.status === 'online' && dev.photo.created_at}}"
+            open-type="share"
+            catchtap="share"
+            data-deviceid="{{dev.device_id}}"
+            data-name="{{dev.name}}"
+            data-imgsrc="{{dev.photo.src}}"
+            data-createdat="{{dev.photo.created_at}}"
+            data-imgheight="{{dev.photo.height}}"
+            class="share">
+            <view class="icon-wrapper">
+              <image class="icon-share" src="/images/common/home_icon_share@2x.png"></image>
+            </view>分享
+          </button>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+<view
+    bind:touchstart="moveStart"
+    catch:touchmove="moveIng"
+    bind:touchend="moveEnd"
+    class="movable-view"
+    style="bottom: {{floating_bottom}}rpx;right: {{floating_right}}rpx;">
+  <view
+    catchtap="showMode"
+    class="btn-add"
+    style="{{mode_is_visible ? 'transform: rotate(45deg);box-shadow: 0 10rpx 40rpx -6rpx rgb(110, 178, 133);' : ''}}">
+      <image class="icon-add" src="/images/index/icon_add@2x.png"></image>
+  </view>
+  <view
+    bindtap='goToInputNumber'
+    class="mode-item item-input text-center"
+    style="{{mode_is_visible ? 'bottom: 280rpx;' : 'bottom: 10rpx;'}}">
+    <image class="icon-add" src="/images/index/icon_input@2x.png"></image>
+  </view>
+  <view
+    bindtap='scanCode'
+    class="mode-item item-scan text-center"
+    style="{{mode_is_visible ? 'bottom: 150rpx;' : 'bottom: 10rpx;'}}">
+    <image class="icon-add" src="/images/index/icon_scan@2x.png"></image>
+  </view>
+</view>

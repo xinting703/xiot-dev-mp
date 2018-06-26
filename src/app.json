@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/map/map",
+    "pages/history/history",
+    "pages/video/video",
+    "pages/setname/setname",
+    "pages/inputnumber/inputnumber",
+    "pages/deviceinfo/deviceinfo",
+    "pages/qrcode/qrcode"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#569fff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "极飞物联",
+    "backgroundColor": "#f8f8f8",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "selectedColor": "#569fff",
+    "color": "#9fa8b5",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tabbar/icon_home_nor@2x.png",
+        "selectedIconPath": "images/tabbar/icon_home_sel@2x.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/map/map",
+        "iconPath": "images/tabbar/icon_near_nor@2x.png",
+        "selectedIconPath": "images/tabbar/icon_near_sel@2x.png",
+        "text": "附近"
+      }
+    ]
+  }
+}

@@ -1,0 +1,147 @@
+/* pages/index/index.wxss */
+.page-container {
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+.page-default {
+  margin-bottom: 20%;
+}
+.img-defalut-index {
+  position: relative;
+  left: 50%;
+  display: block;
+  width: 400rpx;
+  height: 320rpx;
+  margin-top: 214rpx;
+  margin-left: -200rpx;
+  margin-bottom: 90rpx;
+}
+/*列表项  */
+.dev-item {
+  display: inline-block;
+  padding: 30rpx 30rpx 0;
+  border-radius: 20rpx;
+  box-shadow: 0 0 56rpx rgba(138, 160, 190, .26);
+  margin-bottom: 40rpx;
+}
+.share {
+  position: absolute;
+  top: 0;
+  right: 10rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  color: #9fa3a8;
+  background-color: transparent;
+  padding: 0;
+}
+.icon-share {
+  margin-bottom: 4rpx;
+  margin-right: 6rpx;
+}
+/*可拖动区域*/
+.movable-view {
+  position: fixed;
+  z-index: 7;
+  width: 120rpx;
+  height: 120rpx;
+}
+/*添加按钮  */
+.btn-add {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  /* bottom: 120rpx;
+  right: 20rpx; */
+  z-index: 1000;
+  width: 120rpx;
+  height: 120rpx;
+  text-align: center;
+  background-color: #6cd390;
+  border-radius: 50%;
+  padding-top: 40rpx;
+  box-shadow: 0 10rpx 40rpx -6rpx #88d9a4;
+  transition: all .3s;
+}
+.btn-add:active {
+  background-color: rgb(97, 189, 129);
+}
+.icon-add {
+  width: 40rpx;
+  height: 40rpx;
+}
+.mode-item {
+  position: absolute;
+  right: 16rpx;
+  /* right: 36rpx; */
+  width: 90rpx;
+  height: 90rpx;
+  background-color: #393c41;
+  border-radius: 50%;
+  padding-top: 23rpx;
+  box-shadow: 0 8rpx 18rpx rgba(57, 60, 65, .28);
+  transition: bottom .3s;
+}
+.item-input {
+  z-index: 998;
+}
+.item-scan {
+  z-index: 999;
+}
+.mode-item
+.icon-mode {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+/* 底部添加提示--现已改版（可去掉） */
+.tip-add {
+  position: fixed;
+  bottom: 146rpx;
+  left: 50%;
+  width: 190rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  color: #fff;
+  background-color: #569fff;
+  margin-left: -95rpx;
+  border-radius: 10rpx;
+  box-shadow: 0 6rpx 18rpx 0 rgba(52, 140, 255, .28);
+}
+.tip-add
+.triangle {
+  position: absolute;
+  bottom: -6rpx;
+  left: 50%;
+  border-style: solid;
+  border-width: 10rpx;
+  border-color: #569fff #569fff transparent transparent;
+  transform: rotate(135deg);
+  box-shadow: 2rpx -6rpx 16rpx rgba(52, 140, 255, .28);
+  margin-left: -8rpx;
+}/* 底部添加提示--现已改版（可去掉） */
+
+
+/*movable-area()*/
+.movable-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.movable-btn {
+  position: absolute;
+  bottom: 120rpx;
+  right: 20rpx;
+  z-index: 1000;
+  width: 120rpx;
+  height: 120rpx;
+  text-align: center;
+  background-color: #6cd390;
+  border-radius: 50%;
+  padding-top: 40rpx;
+  box-shadow: 0 10rpx 40rpx -6rpx #88d9a4;
+  transition: all .3s;
+  box-sizing: border-box;
+}

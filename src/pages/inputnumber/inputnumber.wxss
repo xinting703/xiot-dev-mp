@@ -1,0 +1,4 @@
+/* pages/inputnumber/inputnumber.wxss */
+.list-item {
+  padding-right: 70rpx;
+}

@@ -1,0 +1,58 @@
+<!--pages/deviceinfo/deviceinfo.wxml-->
+<view wx:if="{{basic_info}}" class="page-container with-bg-grayblue">
+  <view class="list-wrap">
+    <view
+      bindtap="{{is_owner && show_detail ? 'setName' : ''}}"
+      class="list-item with-image {{is_owner && show_detail ? 'with-arrow' : ''}}">
+      <image class="icon-label" src="/images/deviceinfo/setup_icon_name@2x.png"></image>
+      <text class="text-label">名称</text>
+      <text class="text-desc">{{basic_info.name}}</text>
+      <image wx:if="{{is_owner && show_detail}}" class="icon-arrow" src="/images/common/icon_arrow@2x.png"></image> 
+    </view>
+    <block wx:if="{{show_detail && is_owner}}">
+      <view class="list-item with-image">
+        <image class="icon-label" src="/images/deviceinfo/setup_icon_Serialnum@2x.png"></image>
+        <text class="text-label">编号</text>
+        <text class="text-desc">{{basic_info.device_id}}</text>
+      </view>
+      <view class="list-item with-image">
+        <image class="icon-label" src="/images/deviceinfo/setup_icon_num@2x.png"></image>
+        <text class="text-label">序列号</text>
+        <text class="text-desc">{{basic_info.sn}}</text>
+      </view>
+    </block>
+    <view wx:if="{{show_detail}}" bindtap="checkQrcode" class="list-item with-image with-arrow">
+      <image class="icon-label" src="/images/deviceinfo/setup_icon_qrcode@2x.png"></image>
+      <text class="text-label">二维码</text>
+      <image class="icon-arrow" src="/images/common/icon_arrow@2x.png"></image> 
+    </view>
+  </view>
+  <block wx:if="{{show_detail}}">
+    <view class="list-wrap">
+      <view class="list-item with-image">
+        <image class="icon-label" src="/images/deviceinfo/setup_icon_model@2x.png"></image>
+        <text class="text-label">型号</text>
+        <text class="text-desc">{{basic_info.model_name}}</text>
+      </view>
+      <view class="list-item with-image">
+        <image class="icon-label" src="/images/deviceinfo/setup_icon_software@2x.png"></image>
+        <text class="text-label">软件版本</text>
+        <text class="text-desc">{{basic_info.version || '0.0.1'}}</text>
+      </view>
+    </view>
+    <view class="list-wrap">
+      <view wx:if="{{is_owner}}" class="list-item with-image">
+        <image class="icon-label" src="/images/deviceinfo/setup_icon_shared@2x.png"></image>
+        <text class="text-label">数据分享</text>
+        <switch
+          checked="{{basic_info.is_public}}"
+          bindchange="switchChange"
+          class="switch"
+          color="#75ca85"/>
+      </view>
+    </view>
+  </block>
+
+  <button bindtap="deleteDevice" data-deviceid="{{basic_info.device_id}}" wx:if="{{show_detail}}" class="btn btn-block text-red btn-active-gradient">取消关注</button>
+  <button wx:else bindtap="{{is_added ? '' : 'addDevice'}}" data-deviceid="{{basic_info.device_id}}" class="btn btn-block text-green mt-80 {{is_added ? '' : 'btn-active-gradient'}}" style="{{is_added ? 'color: #C4E9D1;' : ''}}">{{is_added ? '已关注' : '关注'}}</button>
+</view>

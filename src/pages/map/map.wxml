@@ -1,0 +1,38 @@
+<!--pages/map/map.wxml-->
+ <view class="page-container">
+  <map id="map"
+    longitude="{{longitude}}"
+    latitude="{{latitude}}"
+    markers="{{markers}}"
+    controls="{{controls}}"
+    scale="14"
+    show-location
+    bindtap="clickMap"
+    bindmarkertap="clickMarker"
+    bindcontroltap="tapControl"
+    style="height: {{map_height}}px;">
+  </map>  
+  <view class="map-info">
+    <view
+      wx:if="{{photo_is_visible}}"
+      class="photo-info">
+      <view class="name">{{name || '--'}}</view>
+      <view class="addr">
+        <image class="icon-addr" src="/images/common/home_icon_address@2x.png"></image>
+        <view class="text">{{address}}</view>
+      </view>
+      <image
+        wx:if="{{photo.src}}"
+        class="photo"
+        src="{{photo.src}}"
+        style="height: {{photo.height}}px;">
+      </image>
+      <view
+        bindtap="{{has_followed ? '' : 'tapFollow'}}"
+        id="{{device_id}}"
+        class="btn btn-block btn-follow {{has_followed ? 'btn-not-allowed' : 'btn-normal'}}">
+        {{has_followed ? '已关注' : '关注'}}
+      </view>
+    </view>
+  </view>
+ </view>
